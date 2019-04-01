@@ -23,8 +23,10 @@ def merge(author, branch):
     repo.remote('newscred').pull('master')
     try:
         repo.git.merge('--ff-only', '%s/%s' % (author, branch))
+        print('Ready to be merge')
     except GitCommandError as error:
         print(error.stderr)
+        print('Please make sure the branch %s/%s, is rebased' % (author, branch))
 
 
 def run():
