@@ -2,7 +2,7 @@
 
 import os
 import argparse
-from git import Repo
+from git import Repo, GitCommandError
 from utils import get_repo, get_or_create_remote, validate_author_branch
 
 
@@ -19,7 +19,12 @@ def merge(author, branch):
     remote.fetch(branch)
 
     repo.git.checkout('master')
-    repo.git.merge('--ff-only', '%s/%s' % (author, branch))
+    print('Pulling changes from master')
+    repo.remote('newscred').pull('master')
+    try:
+        repo.git.merge('--ff-only', '%s/%s' % (author, branch))
+    except GitCommandError as error:
+        print(error.stderr)
 
 
 def run():
