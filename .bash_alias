@@ -1,0 +1,7 @@
+alias rebase="/home/jitu/development/projects/scripts/rebase.sh"
+alias review="python /home/jitu/development/projects/scripts/review.py"
+alias gs="git status"
+alias gb="git branch"
+alias gl="git log"
+alias co="git checkout $1"
+alias assets_local="mycli -uassets-app -pqwe90qwe newscred_assets"
