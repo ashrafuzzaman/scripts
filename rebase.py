@@ -12,16 +12,14 @@ def rebase():
         return
 
     print('Pulling changes from master')
-    import ipdb
-    ipdb.set_trace()
     repo.remote('newscred').fetch('master')
-    repo.git.rebase('newscred/master')
 
     if repo.is_dirty():
         print('Please fix the rebase')
         return
     repo.git.rebase('newscred/master')
     # TODO: Push to remote branch
+    # repo.git.push()
 
 
 rebase()
