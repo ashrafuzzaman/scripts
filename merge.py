@@ -21,6 +21,7 @@ def merge(author, branch):
     repo.git.checkout('master')
     print('Pulling changes from master')
     repo.remote('newscred').pull('master')
+
     try:
         repo.git.merge('--ff-only', '%s/%s' % (author, branch))
         print('Ready to be merge')

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from git import Repo, GitCommandError
-from utils import get_repo, get_or_create_remote, validate_author_branch
+from utils import get_repo, get_or_create_remote, validate_author_branch, get_remote_tracking_branch
 
 
 def rebase():
@@ -18,8 +18,13 @@ def rebase():
         print('Please fix the rebase')
         return
     repo.git.rebase('newscred/master')
-    # TODO: Push to remote branch
-    # repo.git.push()
+    print('Rebased to master')
+
+    tracking_remote = get_remote_tracking_branch(repo)
+    branch_name = repo.active_branch.name
+
+    print('Force pusing to %s/%s' % (tracking_remote, branch_name))
+    repo.git.push(tracking_remote, branch_name, force=True)
 
 
 rebase()

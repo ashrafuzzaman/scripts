@@ -3,6 +3,7 @@
 import os
 import argparse
 from git import Repo
+import re
 
 
 def get_repo():
@@ -16,6 +17,15 @@ def get_or_create_remote(repo, author):
         print('Adding %s as new remote', author)
         git_url = repo.remote('newscred').urls.next()
         return repo.create_remote(author, url=git_url.replace('newscred', author))
+
+
+def get_remote_tracking_branch(repo):
+    regex = re.compile(r'^\* .+\[(.+)\/')
+    current_branches = filter(regex.match, repo.git.branch('-vv').split('\n'))
+
+    if len(current_branches) > 0:
+        return regex.match(current_branches[0]).group(1)
+    return None
 
 
 def validate_author_branch(input):
