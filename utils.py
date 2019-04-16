@@ -27,7 +27,7 @@ def get_remote_tracking_branch(repo):
 
     if len(current_branches) > 0:
         return regex.match(current_branches[0]).group(1)
-    return None
+    return 'origin'
 
 
 def validate_author_branch(input):
