@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from git import Repo, GitCommandError
+from git import Repo
 from utils import get_repo, get_or_create_remote, validate_author_branch, get_remote_tracking_branch
 
 
