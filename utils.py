@@ -23,7 +23,7 @@ def get_remote_tracking_branch(repo):
     # Sample git branch -vv line
     # * fix-kinesis 15b23666ef [remote_tracking_name/branch] Commit message
     regex = re.compile(r'^\* .+\[(.+)\/')
-    current_branches = filter(regex.match, repo.git.branch('-vv').split('\n'))
+    current_branches = list(filter(regex.match, repo.git.branch('-vv').split('\n')))
 
     if len(current_branches) > 0:
         return regex.match(current_branches[0]).group(1)
