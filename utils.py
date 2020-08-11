@@ -15,7 +15,7 @@ def get_or_create_remote(repo, author):
         return repo.remote(author)
     except:
         print('Adding %s as new remote', author)
-        git_url = repo.remote('newscred').urls.next()
+        git_url = next(repo.remote('newscred').urls)
         return repo.create_remote(author, url=git_url.replace('newscred', author))
 
 
