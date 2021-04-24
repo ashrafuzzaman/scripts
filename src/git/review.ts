@@ -1,18 +1,15 @@
 import { SimpleGit } from 'simple-git';
-import { getGit } from './utils';
-import { parseArgument } from './argparser';
+import { withArgs } from './utils';
 
-function getRemoteAndBranch() {
-  const pattern = /(?<remote>\w+)\:(?<branch>\w+)?/i;
-  return parseArgument(pattern);
-}
+const ARG_PATTERN = /(?<remote>.+)\:(?<branch>.+)?/i;
 
-export async function run(): Promise<SimpleGit> {
-  const { remote, branch } = getRemoteAndBranch();
-  const git: SimpleGit = getGit();
-  const branchSummery = await git.branchLocal();
-  console.log('branches', branchSummery);
-  return git;
+async function run() {
+  withArgs(ARG_PATTERN, async (git: SimpleGit, { remote, branch }) => {
+    console.info(remote, branch);
+    const branchSummery = await git.branchLocal();
+    console.log('branches', branchSummery);
+    return git;
+  });
 };
 
 run();
