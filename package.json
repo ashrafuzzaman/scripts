@@ -1,0 +1,28 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "Helper scripts for daily routine",
+  "main": "index.js",
+  "scripts": {
+    "review": "ts-node src/git/review.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashrafuzzaman/node-scripts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashrafuzzaman/node-scripts/issues"
+  },
+  "homepage": "https://github.com/ashrafuzzaman/node-scripts#readme",
+  "dependencies": {
+    "typescript": "^4.2.4",
+    "ts-node": "^9.1.1",
+    "simple-git": "2.38.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.41"
+  }
+}
