@@ -12,7 +12,6 @@ function parseArgument(pattern) {
 };
 
 export function getGit(): SimpleGit {
-  console.info('Current directory: ', process.cwd());
   const options: Partial<SimpleGitOptions> = {
     baseDir: process.cwd(),
     binary: 'git'
@@ -32,4 +31,26 @@ export function warn(text) {
 
 export function info(text) {
   console.info(text);
+}
+
+export async function hasUnstashedChanges(git) {
+  const status = await git.status();
+  return status.modified.length > 0;
+}
+
+function remoteExists(remotes, remoteUrl) {
+  return remotes.some(remote => remote.refs.fetch === remoteUrl);
+}
+
+export async function addRemote(git, remote) {
+  const remotes = await git.getRemotes(true);
+  const gitRepoUrl = remotes[0].refs.fetch;
+  const gitUrlPattern = /git@github.com:(?<remote>.+)\/(?<repoName>.+)\.git/i;
+  const { repoName } = gitRepoUrl.match(gitUrlPattern).groups;
+  const remoteUrl = `git@github.com:${remote}/${repoName}.git`;
+
+  if (!remoteExists(remotes, remoteUrl)) {
+    info(`Adding remote ${remote}`);
+    await git.addRemote(remote, remoteUrl);
+  }
 }

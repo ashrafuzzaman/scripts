@@ -1,5 +1,5 @@
 import { SimpleGit } from 'simple-git';
-import { withArgs, warn, info } from './utils';
+import { withArgs, warn, info, hasUnstashedChanges, addRemote } from './utils';
 import * as readline from 'readline';
 
 const ARG_PATTERN = /(?<remote>.+)\:(?<branch>.+)?/i;
@@ -34,19 +34,9 @@ async function run() {
   });
 };
 
-
-async function hasUnstashedChanges(git) {
-  const status = await git.status();
-  return status.modified.length > 0;
-}
-
 async function doesBranchExists(git, branch) {
   const branches = (await git.branchLocal()).all;
   return branches.some(_branch => _branch === branch);
-}
-
-function remoteExists(remotes, remoteUrl) {
-  return remotes.some(remote => remote.refs.fetch === remoteUrl);
 }
 
 function askToResetBranch(next: (resetBranch: boolean) => void) {
@@ -59,19 +49,6 @@ function askToResetBranch(next: (resetBranch: boolean) => void) {
     cliInterface.close();
     next(answer === 'Y');
   });
-}
-
-async function addRemote(git, remote) {
-  const remotes = await git.getRemotes(true);
-  const gitRepoUrl = remotes[0].refs.fetch;
-  const gitUrlPattern = /git@github.com:(?<remote>.+)\/(?<repoName>.+)\.git/i;
-  const { repoName } = gitRepoUrl.match(gitUrlPattern).groups;
-  const remoteUrl = `git@github.com:${remote}/${repoName}.git`;
-
-  if (!remoteExists(remotes, remoteUrl)) {
-    info(`Adding remote ${remote}`);
-    await git.addRemote(remote, remoteUrl);
-  }
 }
 
 run();

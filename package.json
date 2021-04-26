@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "review": "ts-node src/git/review.ts",
+    "rebase": "ts-node src/git/rebase.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --outDir out"
   },
   "bin": {
-    "review": "./out/review.js"
+    "review": "./out/review.js",
+    "rebase": "./out/rebase.js"
   },
   "repository": {
     "type": "git",
