@@ -6,12 +6,14 @@
   "scripts": {
     "review": "ts-node src/git/review.ts",
     "rebase": "ts-node src/git/rebase.ts",
+    "fpush": "ts-node src/git/fpush.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --outDir out"
   },
   "bin": {
     "review": "./out/review.js",
-    "rebase": "./out/rebase.js"
+    "rebase": "./out/rebase.js",
+    "fpush": "./out/fpush.js"
   },
   "repository": {
     "type": "git",
