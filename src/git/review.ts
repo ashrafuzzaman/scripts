@@ -17,13 +17,13 @@ async function run() {
     await git.fetch(remote, branch);
 
     if (await doesBranchExists(git, branch)) {
-      warn('Reseting branch ...');
-      await git.checkout(branch);
-      await git.reset(['--hard', `${remote}/${branch}`]);
-    } else {
-      info(`Checking out branch: ${branch}`);
-      await git.checkout(['-t', `${remote}/${branch}`]);
+      await git.checkout('master');
+      warn('Removing existing branch ...');
+      await git.branch(['-D', branch]);
     }
+
+    info(`Checking out branch: ${branch}`);
+    await git.checkout(['-t', `${remote}/${branch}`]);
   });
 };
 
