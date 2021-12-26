@@ -1,0 +1,27 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+k e",
+        "command": "workbench.explorer.fileView.focus"
+    },
+    {
+      "key": "ctrl+alt+right",
+      "command": "workbench.action.editor.nextChange",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+f5",
+      "command": "-workbench.action.editor.nextChange",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+alt+left",
+      "command": "workbench.action.editor.previousChange",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+f5",
+      "command": "-workbench.action.editor.previousChange",
+      "when": "editorTextFocus"
+    }
+]
