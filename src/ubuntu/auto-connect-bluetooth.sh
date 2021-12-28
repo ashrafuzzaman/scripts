@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo bluetoothctl trust $BLUETOOTH_AUTO_CONNECT_MAC
+
 while true; do
   sleep 1
   OUTPUT=$(sudo bluetoothctl connect $BLUETOOTH_AUTO_CONNECT_MAC)
