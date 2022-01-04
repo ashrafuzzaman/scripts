@@ -1,0 +1,6 @@
+[user]
+        name = AKM Ashrafuzzaman
+        email = ashrafuzzaman.g2@gmail.com
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
