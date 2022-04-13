@@ -1,0 +1,27 @@
+#!/bin/bash
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+cd ~/projects/localdev/
+git checkout master && git pull newscred master
+
+pyenv activate localdev
+nc-docker configure
+
+cd ~/projects
+nc-docker update
+
+(
+  for repo in cmp-client cmp-server; do
+    echo "Building $repo"
+    nc-docker build $repo
+  done
+)
+
+(
+  for repo in sso assets marketing-work-request permissions notification-service; do
+    echo "Pulling $repo"
+    nc-docker pull $repo
+  done
+)
