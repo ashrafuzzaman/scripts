@@ -1,0 +1,5 @@
+#!/bin/bash
+# https://gist.github.com/ashrafuzzaman/d16a4f3d66f9090447624e1072458f92
+
+# devices=`v4l2-ctl --list-devices`
+ffmpeg -f v4l2 -framerate 50 -pix_fmt yuyv422 -video_size 1920x1080 -i /dev/video0 -f v4l2 -vcodec rawvideo -pix_fmt yuv420p /dev/video20
