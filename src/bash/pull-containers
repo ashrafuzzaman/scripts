@@ -9,7 +9,9 @@ git checkout master && git pull newscred master
 pyenv activate localdev
 nc-docker configure
 
-cd ~/projects
-nc-docker update
-
-pull-containers
+(
+  for repo in cmp-client cmp-server sso assets marketing-work-request permissions notification-service; do
+    echo "Pulling $repo"
+    nc-docker pull $repo
+  done
+)
