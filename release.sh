@@ -1,5 +1,6 @@
 #!/bin/bash
 cp src/git/gitconfig ~/.gitconfig
+touch ~/.gitignore
 
 rm -rf out/*
 npm install
