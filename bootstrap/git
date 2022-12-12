@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ -f ~/.gitconfig ] || cp src/git/config/gitconfig ~/.gitconfig
+touch ~/.gitignore
+

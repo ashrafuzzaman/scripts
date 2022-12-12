@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# VS code
+sudo snap install --classic code
+
+# MYcli
+sudo apt install -y mycli
+
+#robomongo
+sudo snap install robomongo

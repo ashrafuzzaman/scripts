@@ -1,0 +1,8 @@
+#!/bin/bash
+
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+source ~/.bashrc
+
+DEFAULT_VERSION=12.18.3
+nvm install $DEFAULT_VERSION
+nvm alias default $DEFAULT_VERSION

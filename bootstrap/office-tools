@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#teams
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+sudo apt update
+sudo apt install -y teams
+
+#chrome
+CHROME_FILE=google-chrome-stable_current_amd64.deb
+wget "https://dl.google.com/linux/direct/$CHROME_FILE"
+sudo dpkg -i $CHROME_FILE

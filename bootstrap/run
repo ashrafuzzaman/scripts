@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sudo apt-get update
+sudo apt install -y curl wget git snapd
+
+./git
+./nvm
+./docker
+./dev-tools
+./office-tools
