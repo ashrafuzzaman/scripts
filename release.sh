@@ -1,9 +1,7 @@
 #!/bin/bash
 
-[ -f ~/.gitconfig ] || cp src/git/config/gitconfig ~/.gitconfig
-touch ~/.gitignore
-
 [ -f ~/.newscred.yaml ] || cp src/bash/config/newscred.yaml ~/.newscred.yaml
+[ -f ~/.bash_aliases ] || cp src/bash/config/bash_aliases ~/.bash_aliases
 
 rm -rf out/*
 npm install
