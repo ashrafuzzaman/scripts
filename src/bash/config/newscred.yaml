@@ -1,0 +1,4 @@
+ssh_user: ashrafuzzaman
+workspace: /home/jitu/projects/
+nc-docker:
+  ecr_region: us-east-1
