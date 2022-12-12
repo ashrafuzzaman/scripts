@@ -8,3 +8,5 @@ sudo apt install -y curl wget git snapd
 ./docker
 ./dev-tools
 ./office-tools
+
+echo "Remember to update the credential /usr/local/etc/openvpn/login.conf"

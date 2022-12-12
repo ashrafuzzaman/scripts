@@ -10,3 +10,16 @@ sudo apt install -y teams
 CHROME_FILE=google-chrome-stable_current_amd64.deb
 wget "https://dl.google.com/linux/direct/$CHROME_FILE"
 sudo dpkg -i $CHROME_FILE
+rm -rf $CHROME_FILE
+
+# openvpn
+sudo apt install -y tzdata openvpn
+[ -f /etc/openvpn/client/client.conf ] || sudo cp src/bash/config/vpn/client.conf /etc/openvpn/client/client.conf
+[ -f /usr/local/etc/openvpn/login.conf ] || sudo cp src/bash/config/vpn/login.conf /usr/local/etc/openvpn/login.conf
+sudo systemctl enable openvpn-client@client.service
+
+# aws cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm -rf awscliv2.zip aws/

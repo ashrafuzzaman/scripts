@@ -13,3 +13,4 @@ DEFAULT_VERSION=3.8.8
 pyenv install $DEFAULT_VERSION
 pyenv global $DEFAULT_VERSION
 
+pyenv virtualenv $DEFAULT_VERSION localdev
