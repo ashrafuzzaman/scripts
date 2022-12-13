@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "$(tput setaf 7)$(tput setab 2)Git: Setting default configs$(tput sgr 0)"
 [ -f ~/.gitconfig ] || cp src/git/config/gitconfig ~/.gitconfig
 touch ~/.gitignore
 

@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if ! command -v nvm &> /dev/null
+if [ ! -d "${HOME}/.nvm/" ]
 then
-  curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-  source ~/.bashrc
-
   DEFAULT_VERSION=12.18.3
+  echo "$(tput setaf 7)$(tput setab 2)NVM: Download NVM and install node:$DEFAULT_VERSION $(tput sgr 0)"
+
+  curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+  exec $SHELL
+
   nvm install $DEFAULT_VERSION
   nvm alias default $DEFAULT_VERSION
 fi

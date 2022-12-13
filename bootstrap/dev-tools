@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # VS code
+echo "$(tput setaf 7)$(tput setab 2)Checking VS code$(tput sgr 0)"
 command -v docker || sudo snap install --classic code
 
 # MYcli
+echo "$(tput setaf 7)$(tput setab 2)Checking mycli$(tput sgr 0)"
 command -v mycli || sudo apt install -y mycli
 
 #robomongo
+echo "$(tput setaf 7)$(tput setab 2)Checking robomongo$(tput sgr 0)"
 command -v robomongo || sudo snap install robomongo

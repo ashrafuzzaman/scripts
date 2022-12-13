@@ -3,6 +3,7 @@
 #teams
 if ! command -v teams &> /dev/null
 then
+  echo "$(tput setaf 7)$(tput setab 2)Installing teams$(tput sgr 0)"
   curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
   sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
   sudo apt update
@@ -12,6 +13,7 @@ fi
 #chrome
 if ! command -v google-chrome &> /dev/null
 then
+  echo "$(tput setaf 7)$(tput setab 2)Installing chrome$(tput sgr 0)"
   CHROME_FILE=google-chrome-stable_current_amd64.deb
   wget "https://dl.google.com/linux/direct/$CHROME_FILE"
   sudo dpkg -i $CHROME_FILE
@@ -19,6 +21,7 @@ then
 fi
 
 # openvpn
+echo "$(tput setaf 7)$(tput setab 2)Seeting up vpn$(tput sgr 0)"
 if ! command -v openvpn &> /dev/null
 then
   sudo apt install -y tzdata openvpn
@@ -28,6 +31,7 @@ fi
 sudo systemctl enable openvpn-client@client.service
 
 # aws cli
+echo "$(tput setaf 7)$(tput setab 2)Seeting up aws$(tput sgr 0)"
 if ! command -v openvpn &> /dev/null
 then
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"

@@ -2,6 +2,8 @@
 
 if ! command -v docker &> /dev/null
 then
+  echo "$(tput setaf 7)$(tput setab 2)Docker$(tput sgr 0)"
+
   sudo apt-get install -y apt-transport-https ca-certificates software-properties-common
 
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -9,5 +11,6 @@ then
 
   sudo apt-get update
   sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  echo "$(tput setaf 7)$(tput setab 2)Setting user to user docker without sudo$(tput sgr 0)"
   sudo usermod -aG docker ${USER}
 fi
