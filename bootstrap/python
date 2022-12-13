@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt install -y python3-dev
 if ! command -v pyenv &> /dev/null
 then
   echo "$(tput setaf 7)$(tput setab 2)Seeting up PyEnv$(tput sgr 0)"
