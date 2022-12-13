@@ -1,16 +1,16 @@
 #!/bin/bash
 
-curl https://pyenv.run | bash
+if ! command -v pyenv &> /dev/null
+then
+  curl https://pyenv.run | bash
+  # eval "$(pyenv init --path)"
+  # eval "$(pyenv init -)"
+  # eval "$(pyenv virtualenv-init -)"
+  exec $SHELL
 
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+  DEFAULT_VERSION=3.8.8
+  pyenv install $DEFAULT_VERSION
+  pyenv global $DEFAULT_VERSION
 
-
-exec $SHELL
-
-DEFAULT_VERSION=3.8.8
-pyenv install $DEFAULT_VERSION
-pyenv global $DEFAULT_VERSION
-
-pyenv virtualenv $DEFAULT_VERSION localdev
+  pyenv virtualenv $DEFAULT_VERSION localdev
+fi
