@@ -29,15 +29,3 @@ fi
 [ -f /etc/openvpn/client/client.conf ] || sudo cp src/bash/config/vpn/client.conf /etc/openvpn/client/client.conf
 [ -f /usr/local/etc/openvpn/login.conf ] || sudo cp src/bash/config/vpn/login.conf /usr/local/etc/openvpn/login.conf
 sudo systemctl enable openvpn-client@client.service
-
-# aws cli
-echo "$(tput setaf 7)$(tput setab 2)Seeting up aws$(tput sgr 0)"
-if ! command -v openvpn &> /dev/null
-then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  unzip awscliv2.zip
-  sudo ./aws/install
-  rm -rf awscliv2.zip aws/
-fi
-mkdir ~/.aws
-[ -f ~/.aws/config ] || cp src/bash/config/aws/config ~/.aws/
